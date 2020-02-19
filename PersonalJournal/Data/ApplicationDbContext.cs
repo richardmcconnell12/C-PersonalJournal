@@ -26,10 +26,10 @@ namespace PersonalJournal.Data
 
             ApplicationUser user = new ApplicationUser
             {
-                FirstName = "Admin",
+                FirstName = "Admini",
                 LastName = "Strator",
-                Email = "adminstrator@internet.com",
-                NormalizedEmail = "ADMINSTRATOR@INTERNET.COM",
+                Email = "administrator@internet.com",
+                NormalizedEmail = "ADMINISTRATOR@INTERNET.COM",
                 EmailConfirmed = true,
                 LockoutEnabled = false,
                 SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
