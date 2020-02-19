@@ -39,6 +39,15 @@ namespace PersonalJournal.Data
             user.PasswordHash = passwordHash.HashPassword(user, "Abc123!");
             modelBuilder.Entity<ApplicationUser>().HasData(user);
 
+            modelBuilder.Entity<Entry>().HasData(
+            new Entry()
+            {
+                EntryId = 1,
+                Entries = "Seeded data for journal application",
+                Mood = "Determined"
+            }
+        );
+
 
         }
     }
