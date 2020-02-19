@@ -18,6 +18,12 @@ namespace PersonalJournal.Models
         public string Entries { get; set; }
 
         [Required]
+        public string UserId { get; set; }
+
+        [Display(Name = "Created by")]
+        public virtual ApplicationUser User { get; set; }
+
+        [Required]
         [DataType(DataType.Date)]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Display(Name = "Date Created")]

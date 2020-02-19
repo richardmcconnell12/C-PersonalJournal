@@ -43,8 +43,10 @@ namespace PersonalJournal.Data
             new Entry()
             {
                 EntryId = 1,
+                UserId = user.Id,
                 Entries = "Seeded data for journal application",
-                Mood = "Determined"
+                Mood = "Determined",
+                DateCreated = DateTime.Now,
             }
         );
 

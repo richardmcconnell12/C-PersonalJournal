@@ -10,8 +10,8 @@ using PersonalJournal.Data;
 namespace PersonalJournal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200219155314_initMigration")]
-    partial class initMigration
+    [Migration("20200219161608_intialCreate")]
+    partial class intialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -232,14 +232,14 @@ namespace PersonalJournal.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fb9884a9-7314-4fbc-8955-ccd1cf4107d6",
+                            ConcurrencyStamp = "19b89f63-2866-4ea0-b56c-e80f094f8ea7",
                             Email = "administrator@internet.com",
                             EmailConfirmed = true,
                             FirstName = "Admini",
                             LastName = "Strator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINISTRATOR@INTERNET.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH1WB5jcEg+COFtuDMWY/G2/CxuckJHKICPkwF3ZNU3B2wVbZgAA2UiWm8wgCWu1qw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHFAOGaiCgUTSr6hz+JePJNqTcafr5W0bU9haPzeAZQcYHBkHcGJxr1EyMErxvjh0w==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false
@@ -253,9 +253,6 @@ namespace PersonalJournal.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2")
@@ -267,9 +264,13 @@ namespace PersonalJournal.Migrations
                     b.Property<string>("Mood")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("EntryId");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Entries");
 
@@ -277,9 +278,10 @@ namespace PersonalJournal.Migrations
                         new
                         {
                             EntryId = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2020, 2, 19, 10, 16, 8, 49, DateTimeKind.Local).AddTicks(9900),
                             Entries = "Seeded data for journal application",
-                            Mood = "Determined"
+                            Mood = "Determined",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         });
                 });
 
@@ -336,9 +338,11 @@ namespace PersonalJournal.Migrations
 
             modelBuilder.Entity("PersonalJournal.Models.Entry", b =>
                 {
-                    b.HasOne("PersonalJournal.Models.ApplicationUser", null)
+                    b.HasOne("PersonalJournal.Models.ApplicationUser", "User")
                         .WithMany("Entries")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
