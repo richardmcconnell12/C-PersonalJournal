@@ -178,6 +178,7 @@ namespace PersonalJournal.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -230,14 +231,14 @@ namespace PersonalJournal.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "19b89f63-2866-4ea0-b56c-e80f094f8ea7",
+                            ConcurrencyStamp = "c4548a01-457b-4b21-8d06-4f33838b4c4b",
                             Email = "administrator@internet.com",
                             EmailConfirmed = true,
                             FirstName = "Admini",
                             LastName = "Strator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINISTRATOR@INTERNET.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHFAOGaiCgUTSr6hz+JePJNqTcafr5W0bU9haPzeAZQcYHBkHcGJxr1EyMErxvjh0w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEII6Wstnz0D/i7xqIgK3dD3E7BNgYDJ9+uSZqVSxbsfLAzul5/PeLQKO/OAwQP6g1g==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false
@@ -276,7 +277,7 @@ namespace PersonalJournal.Migrations
                         new
                         {
                             EntryId = 1,
-                            DateCreated = new DateTime(2020, 2, 19, 10, 16, 8, 49, DateTimeKind.Local).AddTicks(9900),
+                            DateCreated = new DateTime(2020, 2, 23, 12, 39, 28, 505, DateTimeKind.Local).AddTicks(54),
                             Entries = "Seeded data for journal application",
                             Mood = "Determined",
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff"

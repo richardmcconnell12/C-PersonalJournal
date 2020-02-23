@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -29,6 +30,15 @@ namespace PersonalJournal.Controllers
         {
             var applicationDbContext = _context.Entries.Include(e => e.User);
             return View(await applicationDbContext.ToListAsync());
+        }
+
+        [Authorize]
+        public async Task<IActionResult> MyEntries()
+        {
+            var user = await GetUserAsync();
+            var userEntries = _context.Entries
+                .Where(r => r.UserId == user.Id);
+            return View(await userEntries.ToListAsync());
         }
 
         // GET: Entries/Details/5
@@ -155,6 +165,17 @@ namespace PersonalJournal.Controllers
             _context.Entries.Remove(entry);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        private Task<ApplicationUser> GetUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
+        }
+
+        private async Task<bool> WasCreatedByUser(Entry Entries)
+        {
+            var user = await GetUserAsync();
+            return Entries.UserId == user.Id;
         }
 
         private bool EntryExists(int? id)

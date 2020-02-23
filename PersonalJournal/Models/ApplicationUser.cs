@@ -14,6 +14,7 @@ namespace PersonalJournal.Models
         [Required]
         public string FirstName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
 
         public virtual ICollection<Entry> Entries { get; set; }
