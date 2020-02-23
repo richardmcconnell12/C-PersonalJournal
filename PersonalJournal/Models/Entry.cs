@@ -13,7 +13,10 @@ namespace PersonalJournal.Models
         [Display(Name = "Id")]
         public int? EntryId { get; set; }
 
-        public string Mood { get; set; }
+        [Display(Name = "Mood")]
+        public int MoodId { get; set; }
+
+        public virtual Mood Feeling { get; set; }
 
         public string Entries { get; set; }
 

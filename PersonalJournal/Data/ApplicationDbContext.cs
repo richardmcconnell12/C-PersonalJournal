@@ -13,6 +13,7 @@ namespace PersonalJournal.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Entry> Entries { get; set; }
+        public DbSet<Mood> Feeling { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,13 +40,51 @@ namespace PersonalJournal.Data
             user.PasswordHash = passwordHash.HashPassword(user, "Abc123!");
             modelBuilder.Entity<ApplicationUser>().HasData(user);
 
+            modelBuilder.Entity<Mood>().HasData(
+                new Mood()
+                {
+                    MoodId = 1,
+                    Feeling = "Happy"
+                },
+                
+                new Mood()
+                {
+                    MoodId = 2, 
+                    Feeling = "Excited"
+                },
+
+                new Mood()
+                {
+                    MoodId = 3,
+                    Feeling = "Determined"
+                },
+
+                new Mood()
+                {
+                    MoodId = 4,
+                    Feeling = "Defeated"
+                },
+                
+                new Mood()
+                {
+                    MoodId = 5,
+                    Feeling = "Mad"
+                },
+
+                new Mood()
+                {
+                    MoodId = 6, 
+                    Feeling = "Sad"
+                }
+             );
+
             modelBuilder.Entity<Entry>().HasData(
             new Entry()
             {
                 EntryId = 1,
                 UserId = user.Id,
                 Entries = "Seeded data for journal application",
-                Mood = "Determined",
+                MoodId = 3,
                 DateCreated = DateTime.Now,
             }
         );

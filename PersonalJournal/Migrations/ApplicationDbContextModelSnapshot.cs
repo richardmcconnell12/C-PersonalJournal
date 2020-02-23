@@ -231,14 +231,14 @@ namespace PersonalJournal.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c4548a01-457b-4b21-8d06-4f33838b4c4b",
+                            ConcurrencyStamp = "305fa884-37e2-434b-80d9-3fea09566635",
                             Email = "administrator@internet.com",
                             EmailConfirmed = true,
                             FirstName = "Admini",
                             LastName = "Strator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINISTRATOR@INTERNET.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEII6Wstnz0D/i7xqIgK3dD3E7BNgYDJ9+uSZqVSxbsfLAzul5/PeLQKO/OAwQP6g1g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA1Rpp7iIO38KaKyfdKsWoY2UR0VdGGwPGaOUqsh04hrZ9pta0gR/UN53pvQVyb+EQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false
@@ -277,7 +277,7 @@ namespace PersonalJournal.Migrations
                         new
                         {
                             EntryId = 1,
-                            DateCreated = new DateTime(2020, 2, 23, 12, 39, 28, 505, DateTimeKind.Local).AddTicks(54),
+                            DateCreated = new DateTime(2020, 2, 23, 12, 53, 56, 852, DateTimeKind.Local).AddTicks(8335),
                             Entries = "Seeded data for journal application",
                             Mood = "Determined",
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
